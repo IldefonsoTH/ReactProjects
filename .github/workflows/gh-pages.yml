@@ -9,13 +9,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    env:
+      NODE_OPTIONS: --unstable=10.0
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
-  
-      env:
-        ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
     - name: Restore dependencies cache
       uses: actions/cache@v2
@@ -36,3 +35,4 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./dist
+
