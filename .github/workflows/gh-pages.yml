@@ -24,10 +24,13 @@ jobs:
         path: |
           ~/.npm
           ~/.cache
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        key: ${{ runner.os }}-node-${{ hashFiles('**/twitter-app/package-lock.json') }}
 
     - name: Install dependencies
       run: npm install
+
+    - name: Change to the workspace directory
+      run: cd twitter-app
 
     - name: Build
       run: npm run build
