@@ -20,8 +20,6 @@ jobs:
           ~/.npm
           ~/.cache
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      restore-keys: |
-        ${{ runner.os }}-node-
 
     - name: Install dependencies
       run: npm install
@@ -34,4 +32,3 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./dist
-
