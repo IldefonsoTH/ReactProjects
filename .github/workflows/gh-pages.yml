@@ -24,19 +24,18 @@ jobs:
         path: |
           ~/.npm
           ~/.cache
-        key: ${{ runner.os }}-node-${{ hashFiles('**/twitter-app/package-lock.json') }}
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
     - name: Install dependencies
       run: npm install
-
-    - name: Change to the workspace directory
-      run: cd twitter-app
+      working-directory: ./twitter-app
 
     - name: Build
       run: npm run build
+      working-directory: ./twitter-app
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+        publish_dir: ./twitter-app/dist
