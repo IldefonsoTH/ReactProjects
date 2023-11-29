@@ -18,6 +18,9 @@ jobs:
       with:
         node-version: 14  # Puedes ajustar la versión según tus necesidades
 
+    - name: Change to repository directory
+      run: cd $GITHUB_WORKSPACE
+
     - name: Restore dependencies cache
       uses: actions/cache@v3
       with:
@@ -37,3 +40,4 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./dist
+
